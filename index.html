@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zenith Study — Школьное решение</title>
+  <meta name="theme-color" content="#181714" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #12110F;
+      color: #EDEBE4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+    .container {
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #1C1B17;
+      border: 1px solid #2E2C26;
+      border-radius: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: #EDEBE4;
+    }
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #D97757;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 16px;
+    }
+    .card {
+      background: #181714;
+      border: 1px solid #2F2D27;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(217, 119, 87, 0.15);
+      border: 1px solid rgba(217, 119, 87, 0.3);
+      color: #D97757;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #EDEBE4;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .meta {
+      font-size: 12px;
+      color: #8C877D;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-primary {
+      background: #D97757;
+      color: white;
+      box-shadow: 0 4px 14px rgba(217, 119, 87, 0.3);
+    }
+    .btn-primary:hover { background: #E28B6E; }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-secondary {
+      background: #24221D;
+      color: #EDEBE4;
+      border: 1px solid #38362F;
+    }
+    .btn-secondary:hover { background: #2D2B24; }
+    .content-box {
+      margin-top: 16px;
+      padding: 16px;
+      background: #12110F;
+      border: 1px solid #282621;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #D6D2C4;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 40px 20px;
+      color: #9E998E;
+      font-size: 13px;
+    }
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(217, 119, 87, 0.2);
+      border-top-color: #D97757;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .notice-bar {
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #6EE7B7;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Bar -->
+    <div class="header">
+      <div class="logo">
+        <div class="logo-badge">⚡</div>
+        <span>Zenith Study</span>
+      </div>
+      <a href="https://drive.google.com/drive/folders/1ZqC_W8pBsk2-FomJtQhG4w_uN1_mD8h_?usp=sharing" target="_blank" class="btn btn-secondary" style="width:auto; padding: 6px 12px; font-size: 11px;">
+        📥 Скачать APK
+      </a>
+    </div>
+
+    <!-- Main Dynamic Card -->
+    <div class="card" id="mainCard">
+      <div class="loader" id="loadingState">
+        <div class="spinner"></div>
+        <div>Перенаправление в Zenith Study...</div>
+      </div>
+
+      <div id="contentState" style="display:none;">
+        <div class="notice-bar">
+          <span>✓ Задание найдено! Перенаправляем в приложение...</span>
+        </div>
+
+        <div class="badge" id="taskSubject">Предмет</div>
+        <h1 class="title" id="taskTitle">Название решения</h1>
+        <div class="meta">
+          <span id="taskAuthor">Автор: Шеф</span>
+          <span>•</span>
+          <span id="taskDate">Школьное задание</span>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <button id="openAppBtn" class="btn btn-primary">
+            📱 Открыть в приложении Zenith Study
+          </button>
+          <button id="copyAllBtn" class="btn btn-secondary">
+            📋 Скопировать ответ в буфер
+          </button>
+        </div>
+
+        <div class="content-box" id="taskSolution"></div>
+      </div>
+
+      <div id="emptyState" style="display:none; text-align:center; padding:30px 10px;">
+        <div style="font-size:36px; margin-bottom:10px;">🎒</div>
+        <h2 style="font-size:16px; margin-bottom:6px;">Zenith Study</h2>
+        <p style="font-size:12px; color:#8C877D; margin-bottom:16px;">
+          Школьный ИИ-ассистент с 2 агентами, защитой от антиплагиата и мгновенными решениями.
+        </p>
+        <a href="https://drive.google.com/drive/folders/1ZqC_W8pBsk2-FomJtQhG4w_uN1_mD8h_?usp=sharing" class="btn btn-primary">
+          📥 Скачать приложение (APK)
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const shareCode = params.get('share') || params.get('id') || params.get('code');
+
+    function tryLaunchApp(code) {
+      if (!code) return;
+      const intentUrl = `intent://share?id=${code}#Intent;scheme=zenith;package=com.zenith.study;end`;
+      const customScheme = `zenith://share?id=${code}`;
+      
+      // Attempt opening via custom scheme or android intent
+      window.location.href = customScheme;
+      setTimeout(() => {
+        window.location.href = intentUrl;
+      }, 400);
+    }
+
+    if (shareCode) {
+      // 1. Immediately fire deep link bounce to app
+      tryLaunchApp(shareCode);
+
+      // 2. Fetch solution directly from Supabase for instant browser view
+      const supabaseUrl = 'https://jdqqwqnvdbrujlidmhdy.supabase.co';
+      const anonKey = 'sb_publishable_-Ca-w0EQhFQZWFk_Ge1cpg_1EjrV_nN';
+
+      fetch(`${supabaseUrl}/rest/v1/devices?device_id=eq.shared_${encodeURIComponent(shareCode)}`, {
+        headers: {
+          'apikey': anonKey,
+          'Authorization': `Bearer ${anonKey}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('loadingState').style.display = 'none';
+        if (data && data.length > 0 && data[0].user_name) {
+          const session = JSON.parse(data[0].user_name);
+          document.getElementById('contentState').style.display = 'block';
+          document.getElementById('taskTitle').innerText = session.title || 'Школьное задание';
+          document.getElementById('taskSubject').innerText = session.subject || 'Задание';
+          document.getElementById('taskAuthor').innerText = `Поделился: ${session.sharedBy || 'Шеф'}`;
+          
+          let fullText = '';
+          session.messages.forEach(m => {
+            if (m.role === 'assistant') {
+              if (m.shortVersion) {
+                fullText += `[КРАТКИЙ ЧИСТОВИК]:\n${m.shortVersion}\n\n---\n\n`;
+              }
+              fullText += m.content + '\n\n';
+            }
+          });
+          const solBox = document.getElementById('taskSolution');
+          solBox.innerText = fullText || 'Текст ответа загружен.';
+          
+          // Render Math KaTeX
+          try {
+            if (window.renderMathInElement) {
+              renderMathInElement(solBox, {
+                delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+              });
+            }
+          } catch (_) {}
+
+          document.getElementById('openAppBtn').onclick = () => tryLaunchApp(shareCode);
+          document.getElementById('copyAllBtn').onclick = () => {
+            navigator.clipboard.writeText(fullText);
+            alert('Решение скопировано в буфер обмена!');
+          };
+        } else {
+          document.getElementById('emptyState').style.display = 'block';
+        }
+      })
+      .catch(() => {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('emptyState').style.display = 'block';
+      });
+    } else {
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('emptyState').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
